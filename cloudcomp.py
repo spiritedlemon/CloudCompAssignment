@@ -51,6 +51,7 @@ def images_index():
     """
     List all images
 
+    ###
     """
 
     images = cli.images()
@@ -63,6 +64,7 @@ def containers_show(id):
     """
     Inspect specific container
 
+    ###
     """
 
     cli.inspect_container('id')['Name']
@@ -73,6 +75,8 @@ def containers_show(id):
 def containers_log(id):
     """
     Dump specific container logs
+
+    ###
     """
 
     cli.logs(id)
@@ -95,6 +99,7 @@ def containers_remove(id):
     Delete a specific container - must be already stopped/killed
 
 	If the specified container isn't running it can be deleted
+    ###
     """
     if request.args.get('state') != 'running':
 #        docker ('rm', id)
@@ -115,7 +120,7 @@ def containers_remove_all():
     #select = docker ps -a -q
     #docker ('stop', select)
 
-    cli.remove_container -a()   #Unsure if this works??
+    cli.remove_container -a()   ##Untested##
 
     resp = ''
     return Response(response=resp, mimetype="application/json")
@@ -129,7 +134,7 @@ def images_remove_all():
     #docker rmi $(docker images -q)
     #docker image rm -f IMAGE [docker image ls -a -q]
 
-    cli.remove_image -a()   #Unsure if this works
+    cli.remove_image -a()   ##Untested##
 
     resp = ''
     return Response(response=resp, mimetype="application/json")
@@ -188,6 +193,7 @@ def images_update(id):
     Update image attributes (support: name[:tag])  tag name should be lowercase only
     curl -s -X PATCH -H 'Content-Type: application/json' http://localhost:8080/images/7f2619ed1768 -d '{"tag": "test:1.0"}'
     """
+###
 
     body = request.get_json(force=True)
 
